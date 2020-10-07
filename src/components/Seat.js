@@ -46,7 +46,7 @@ const Seat = (props) => {
         style={{ backgroundColor: color, margin: "10px" }}
         onClick={props.onClickSeat}
       >
-        <EventSeatIcon color="inherit" fontSize="medium"></EventSeatIcon>
+        <EventSeatIcon color="inherit" fontSize="small"></EventSeatIcon>
       </Button>
     </>
   );

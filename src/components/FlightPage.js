@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from "react";
-
-import { connect } from "react-redux";
-
-import * as authActions from "../redux/actions/authActions";
-import { userLogin } from "../redux/actions/authActions";
 import * as flightApi from "../api/flightApi";
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
@@ -115,13 +110,4 @@ const FlightPage = (props) => {
   );
 };
 
-function mapStateToProps(state) {}
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: {
-//       userLogin: bindActionCreators(authActions.userLogin, dispatch),
-//     },
-//   };
-// }
-const mapDispatchToProps = {};
-export default connect(mapStateToProps, mapDispatchToProps)(FlightPage);
+export default FlightPage;

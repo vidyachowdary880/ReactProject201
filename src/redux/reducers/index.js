@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import auth from "./authReducer";
-import apiCallStatus from "./apiStateReducer";
+import passengers from "./passReducer";
+import apiState from "./apiStateReducer";
 const rootReducer = combineReducers({
-  auth,
-  apiCallStatus,
+  passengers,
+  apiState,
 });
 
 export default rootReducer;

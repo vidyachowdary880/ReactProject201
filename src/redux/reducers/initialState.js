@@ -1,4 +1,4 @@
 export default {
-  credentials: {},
+  passengers: [],
   apiCallsInProgress: 0,
 };

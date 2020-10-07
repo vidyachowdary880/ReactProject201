@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import * as passengerApi from "../api/passengerApi";
 import Seat from "./Seat";
+ 
 import {
   Box,
   Paper,
@@ -25,16 +25,30 @@ const useStyles = makeStyles({
 });
 const MealsSeatMap = (props) => {
   const classes = useStyles();
-
   const [seatArray, setSeatArray] = useState(Array(20).fill(0));
-
+  const [ passengerList, setPassengerList] = useState([]);
+   if(props.passengerDetials.length>0 && passengerList.length==0)
+   {
+    let passengersWithSeat = props.passengerDetials
+    .filter((passenger) => passenger.seatNo !== "")
+    .map((passenger) => {
+      return {
+        paxId: passenger.id,
+        seatNo: passenger.seatNo,
+        meals: passenger.specialMeals,
+      };
+    });
+  setSeatsMap(passengersWithSeat);
+  setPassengerList(props.passengerDetials);
+   }
   useEffect(() => {
-    passengerApi.getPassengerFlightDetails(props.flightId).then((resp) => {
+   /*  passengerApi.getPassengerFlightDetails(props.flightId).then((resp) => {
       console.log(resp);
-      const currentList = resp;
-
+      
+    }); */
+    console.log("passengerList",props.passengerDetials)
       // getting all passengers having seat
-      let passengersWithSeat = currentList
+      let passengersWithSeat = props.passengerDetials
         .filter((passenger) => passenger.seatNo !== "")
         .map((passenger) => {
           return {
@@ -44,8 +58,7 @@ const MealsSeatMap = (props) => {
           };
         });
       setSeatsMap(passengersWithSeat);
-    });
-  }, [props.flightId]);
+  }, []);
 
   function setSeatsMap(passengersWithSeat) {
     passengersWithSeat.map((item) => {

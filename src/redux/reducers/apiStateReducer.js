@@ -10,6 +10,7 @@ export default function apiCallStatusReducer(
   action
 ) {
   if (action.type == types.BEGIN_API_CALL) {
+    debugger;
     return state + 1;
   } else if (
     action.type === types.API_CALL_ERROR ||

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import * as passengerApi from "../../api/passengerApi";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import * as passengerActions from "../../redux/actions/passengerActions";
 import {
   Typography,
   FormGroup,
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 const InFLightService = (props) => {
   const classes = useStyles();
   const history = useHistory();
-
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     wheelChair: false,
     infantFacility: false,
@@ -48,16 +49,14 @@ const InFLightService = (props) => {
       wheelChair: form.wheelChair,
       infants: form.infantFacility,
     };
-    passengerApi.savePassangerServices(request).then((resp) => {
-      console.log(resp);
+    dispatch(passengerActions.updatePassengers(request)).then(() => {
       let par = props.match.params.flightId;
-      history.push(`/staff/inFlight/managePassengers/${par}/true`);
-    });
-    console.log(form);
+      history.push(`/staff/inFlight/managePassengers/${par}/true`, { from: 'updatePage' });
+     });
+   
   };
 
   const handleChange = (e) => {
-    debugger;
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     const name = e.target.name;

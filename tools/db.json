@@ -7,9 +7,17 @@
       "destination": "London",
       "depatureTime": "2020-10-24T18:25:43.511Z",
       "arrivalTime": "2012-10-25T07:25:43.511Z",
-      "ancillaryServices": ["wheelChair", "infants"],
-      "specialMeals": ["vegMega", "NON-vegCombo"],
-      "shop": [1]
+      "ancillaryServices": [
+        "wheelChair",
+        "infants"
+      ],
+      "specialMeals": [
+        "vegMega",
+        "NON-vegCombo"
+      ],
+      "shop": [
+        1
+      ]
     },
     {
       "id": "L-002",
@@ -18,9 +26,17 @@
       "destination": "London",
       "depatureTime": "2020-10-24T18:25:43.511Z",
       "arrivalTime": "2012-10-24T23:25:43.511Z",
-      "ancillaryServices": ["wheelChair", "infants"],
-      "specialMeals": ["vegMega", "NON-vegCombo"],
-      "shop": ["iphone earbuds pro"],
+      "ancillaryServices": [
+        "wheelChair",
+        "infants"
+      ],
+      "specialMeals": [
+        "vegMega",
+        "NON-vegCombo"
+      ],
+      "shop": [
+        "iphone earbuds pro"
+      ],
       "seatType": "Max"
     },
     {
@@ -31,7 +47,9 @@
       "depatureTime": "2020-08-24T18:25:43.511Z",
       "arrivalTime": "2012-08-24T23:25:43.511Z",
       "ancillaryServices": [],
-      "specialMeals": ["vegMega"],
+      "specialMeals": [
+        "vegMega"
+      ],
       "shop": [],
       "seatType": "Max"
     }
@@ -60,9 +78,9 @@
       "passengerId": "P-001",
       "checkIn": true,
       "wheelChair": true,
-      "infants": true,
+      "infants": false,
       "specialMeals": "NonVegCombo",
-      "shopRequest": "ipod",
+      "shopRequest": "Shoes",
       "seatNo": "1A"
     },
     {
@@ -73,8 +91,8 @@
       "checkIn": true,
       "wheelChair": true,
       "infants": false,
-      "specialMeals": "",
-      "shopRequest": "",
+      "specialMeals": "NonVegCombo",
+      "shopRequest": "HeadRest",
       "seatNo": "2A"
     },
     {
@@ -86,7 +104,9 @@
       "wheelChair": true,
       "infants": true,
       "specialMeals": "vegMega",
-      "shopRequest": ["HeadRest"],
+      "shopRequest": [
+        "HeadRest"
+      ],
       "seatNo": "1A"
     },
     {
@@ -97,8 +117,8 @@
       "checkIn": true,
       "wheelChair": true,
       "infants": true,
-      "specialMeals": "vegMega",
-      "shopRequest": ["HeadRest"],
+      "specialMeals": "Ala-carte",
+      "shopRequest": "ipod",
       "seatNo": "2B"
     },
     {
@@ -110,7 +130,9 @@
       "wheelChair": false,
       "infants": true,
       "specialMeals": "vegMega",
-      "shopRequest": ["HeadRest"],
+      "shopRequest": [
+        "HeadRest"
+      ],
       "seatNo": "10C"
     },
     {
@@ -119,10 +141,10 @@
       "name": "Miles",
       "passengerId": "P-006",
       "checkIn": false,
-      "wheelChair": false,
-      "infants": false,
-      "specialMeals": "",
-      "shopRequest": [],
+      "wheelChair": true,
+      "infants": true,
+      "specialMeals": "NonVegCombo",
+      "shopRequest": "ipod",
       "seatNo": ""
     },
     {
@@ -138,7 +160,7 @@
       "seatNo": "1D"
     },
     {
-      "id": "7",
+      "id": "8",
       "flightId": "L-002",
       "name": "Amrit",
       "passengerId": "P-008",

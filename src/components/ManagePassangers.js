@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import * as passengerApi from "../api/passengerApi";
 import { Link } from "react-router-dom";
 import MealsSeatMap from "./MealsSeatMap";
+import { useSelector, useDispatch } from "react-redux";
+import * as passengerActions from "../redux/actions/passengerActions";
 import {
   Paper,
   FormGroup,
@@ -17,21 +18,37 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const ManagePassangers = (props) => {
-  const [passengerList, setPassengerList] = useState([]);
-  const [currentPassengerList, setCurrentPassengerList] = useState([]);
-  useEffect(() => {
-    if (passengerList.length === 0) {
-      passengerApi
-        .getPassengerFlightDetails(props.match.params.id)
-        .then((resp) => {
-          console.log(resp);
-          setPassengerList(...passengerList, resp);
-          setCurrentPassengerList(resp);
-        });
-    }
-  });
+ const NO_RESULTS="no results";
 
+const ManagePassangers = (props) => {
+  const [currentPassengerList, setCurrentPassengerList] = useState([]);
+  const [ passengerList, setPassengerList] = useState([]);
+  var response = useSelector((state) => state.passengers);
+   
+
+  if ( ((passengerList.length == 0) && response.length>0  )  ) {
+    setPassengerList(response);
+    setCurrentPassengerList(response);
+  }  
+  else if (((passengerList.length > 0) && response.length>0  ) )
+  {
+     if(passengerList[0].flightId != response[0].flightId)
+     {
+      setPassengerList(response);
+      setCurrentPassengerList(response);
+     }
+  }
+  
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+     
+    dispatch(passengerActions.getPassengers(props.match.params.id));
+    
+ 
+  },  [props.match.params.id] );
+
+  
   const [checkBoxstate, setCheckBoxstate] = useState({
     checkIn: false,
     wheelChair: false,
@@ -66,7 +83,6 @@ const ManagePassangers = (props) => {
     if (infantFacility) {
       filterList = filterList.filter((pas) => pas.infants);
     }
-
     setCurrentPassengerList(filterList);
   };
 
@@ -130,9 +146,10 @@ const ManagePassangers = (props) => {
           </TableHead>
           <TableBody>
             {currentPassengerList.length == 0 ? (
-              <Typography variant="h6" color="inherit">
-                No results
-              </Typography>
+              <TableRow  >
+              <TableCell>{NO_RESULTS }</TableCell>
+                </TableRow>
+             
             ) : (
               currentPassengerList.map((passenger, index) => {
                 const {
