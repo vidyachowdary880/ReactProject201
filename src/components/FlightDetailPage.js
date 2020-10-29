@@ -1,0 +1,165 @@
+
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import MealsSeatMap from "./MealsSeatMap";
+import { useSelector, useDispatch } from "react-redux";
+import * as flightApi from "../api/flightApi";
+import * as passengerActions from "../redux/actions/passengerActions";
+import {
+  Paper,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  TableContainer,
+  Button,
+  Typography,
+  Grid,
+  Divider
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import FlightSeatMap from "./FlightSeatMap";
+
+const useStyles = makeStyles((theme) => ({
+  linkText: {
+    color: "white",
+    textDecoration: "none",
+  },
+}));
+
+
+
+const FlightDetailPage = (props) => {
+     const classes = useStyles();
+    const [flightData, setFlightData] = useState(null);
+    var response = useSelector((state) => state.passengers);
+    if(  response !=undefined)
+    {
+    
+    var filledSeats=getSeatCount(response);
+    }
+  
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (flightData ==null) {
+            flightApi.getFlightDetails(props.match.params.id).then((resp) => {
+                setFlightData(resp[0]);   
+            })
+        }
+      dispatch(passengerActions.getPassengers(props.match.params.id));  
+    },  [props.match.params.id] );
+
+    function getSeatCount(response) {
+        let count =0;
+        response.forEach(element => {
+            if(element.checkIn)
+            {
+                count++;
+            }
+        });
+        return count;
+    }
+    return (
+        <div>
+         <Grid container spacing={0}>
+           <Grid item xs={12} md={4} lg={4}>
+           <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            FlightName:
+          </Typography>  
+           { flightData !=null ? (flightData.name): null }  
+            <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            Depature: 
+          </Typography> 
+            { flightData !=null ? (flightData.depature): null }  
+            <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            Destination:
+          </Typography>
+           { flightData !=null ? (flightData.destination): null }  
+            <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            Available Ancillary Services: 
+          </Typography>
+          { flightData !=null ? (flightData.ancillaryServices): null }  
+           </Grid>
+           <Grid item xs={12} md={4} lg={4}>
+           <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            Available Meal Types: 
+          </Typography>
+          { flightData !=null ? (flightData.specialMeals): null }  
+           <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            Available Shop Items: 
+          </Typography>
+          { flightData !=null ? (flightData.shop): null }  
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            Filled Seats: 
+          </Typography>
+          { filledSeats !=undefined ? filledSeats: 0 }  
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+           Available Passengers: 
+          </Typography>
+          { response !=undefined ? response.length: 0 }  
+          </Grid>
+           <Grid item xs={4} md={3} lg={3}>
+           <Button variant="contained" color="primary">
+             <Link className={classes.linkText} to={"/staff/checkIn/managePassengers/" + props.match.params.id}>
+             Manange Passengers </Link></Button>
+           </Grid>
+          </Grid>
+          <Divider   />
+          <Divider   />
+          <Divider   />
+          <Grid container spacing={0}>
+          <FlightSeatMap
+            flightId={props.match.params.id}
+          />
+            </Grid>
+        </div>
+    );
+
+}
+
+
+export default FlightDetailPage;

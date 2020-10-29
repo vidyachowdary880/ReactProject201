@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Seat from "./Seat";
- 
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import * as passengerActions from "../redux/actions/passengerActions";
 import {
   Box,
   Paper,
@@ -24,53 +26,44 @@ const useStyles = makeStyles({
     marginBottom: 2,
   },
 });
-const MealsSeatMap = (props) => {
+const PassengerSeatMap = (props) => {
   const classes = useStyles();
+  const history = useHistory();
   const [seatArray, setSeatArray] = useState(Array(20).fill(0));
-  const [ passengerList, setPassengerList] = useState([]);
-   if(props.passengerDetials.length>0 && passengerList.length==0)
+  const [seatFill, setseatFill] = useState(false);
+  var response = useSelector((state) => state.passengers);
+   
+   if(response.length>0 &&  !seatFill )
    {
-    let passengersWithSeat = props.passengerDetials
+    let passengersWithSeat =response
     .filter((passenger) => passenger.seatNo !== "")
     .map((passenger) => {
       return {
         paxId: passenger.id,
-        seatNo: passenger.seatNo,
-        meals: passenger.specialMeals,
+        seatNo: passenger.seatNo
       };
     });
   setSeatsMap(passengersWithSeat);
-  setPassengerList(props.passengerDetials);
    }
+   const dispatch = useDispatch();
   useEffect(() => {
-   /*  passengerApi.getPassengerFlightDetails(props.flightId).then((resp) => {
-      console.log(resp);
-      
-    }); */
-    console.log("passengerList",props.passengerDetials)
-      // getting all passengers having seat
-      let passengersWithSeat = props.passengerDetials
-        .filter((passenger) => passenger.seatNo !== "")
-        .map((passenger) => {
-          return {
-            paxId: passenger.id,
-            seatNo: passenger.seatNo,
-            meals: passenger.specialMeals,
-          };
-        });
-      setSeatsMap(passengersWithSeat);
-  }, []);
+      if(response == undefined || response.length==0 )
+      {
+    dispatch(passengerActions.getPassengers(props.match.params.flightId));
+      }
+  }, [props.match.params.flightId]);
 
   function setSeatsMap(passengersWithSeat) {
     passengersWithSeat.map((item) => {
       formSeatArray(item);
     });
     setSeatArray(seatArray);
+    setseatFill(true);
     console.log("seatArray", seatArray);
   }
 
   function formSeatArray(item) {
-    const { seatNo, meals } = item;
+    const { seatNo,paxId } = item;
 
     let row;
     let col;
@@ -85,13 +78,27 @@ const MealsSeatMap = (props) => {
     if (seatArray[row] !== undefined && seatArray[row] !== 0) {
       currentObj = seatArray[row];
     }
-    if (meals !== "") {
-      currentObj[col] = "MEAL";
+    if (paxId == props.match.params.id) {
+      currentObj[col] = "SELECTED";
       seatArray[row] = currentObj;
     } else {
-      currentObj[col] = "NO MEAL";
+      currentObj[col] = "BLOCKED";
       seatArray[row] = currentObj;
     }
+  }
+
+  function manageSeat(event) {
+      console.log(event.currentTarget.value);
+      const paramId = props.match.params.id; 
+    let request = {
+      id: paramId,
+      seatNo: event.currentTarget.value,
+      checkIn:  true,
+    };
+      dispatch(passengerActions.updatePassengers(request)).then(() => {
+      let par = props.match.params.flightId;
+      history.push(`/staff/checkIn/managePassengers/${par}`);
+     });  
   }
   return (
     <>
@@ -115,16 +122,16 @@ const MealsSeatMap = (props) => {
                   <TableRow key={index}>
                     <TableCell>{index + 1}</TableCell>
                     <TableCell>
-                      <Seat seatData={row.A} meal={true} />
+                      <Seat seatData={row.A} seatNo={index+1+"A"} onClickSeat={manageSeat}/>
                     </TableCell>
                     <TableCell>
-                      <Seat seatData={row.B} meal={true} />
+                      <Seat seatData={row.B} seatNo={index+1+"B"} onClickSeat={manageSeat}/>
                     </TableCell>
                     <TableCell>
-                      <Seat seatData={row.C}  meal={true}/>
+                      <Seat seatData={row.C} seatNo={index+1+"C"} onClickSeat={manageSeat}/>
                     </TableCell>
                     <TableCell>
-                      <Seat seatData={row.D} meal={true}/>
+                      <Seat seatData={row.D} seatNo={index+1+"D"} onClickSeat={manageSeat}/>
                     </TableCell>
                   </TableRow>
                 );
@@ -135,14 +142,14 @@ const MealsSeatMap = (props) => {
       </Box>
       </Grid>
       <Grid item xs={9} md={6} lg={6}> 
-        <Seat seatData="MEAL" meal={true} />
-        <b>MEAL</b>
-        <Seat seatData="NO MEAL"  meal={true}/>
-        <b>NO SPEACIAL MEAL</b>
+        <Seat seatData="BLOCKED" />
+        <b>BLOCKED</b>
+        <Seat seatData="SELECTED" />
+        <b>SELECTED</b>
       </Grid>
       </Grid>
     </>
   );
 };
 
-export default MealsSeatMap;
+export default PassengerSeatMap;

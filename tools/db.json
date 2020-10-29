@@ -5,7 +5,7 @@
       "name": "AR-101",
       "depature": "Hyderabad",
       "destination": "London",
-      "depatureTime": "2020-10-24T18:25:43.511Z",
+      "depatureTime": "2020-12-24T18:25:43.511Z",
       "arrivalTime": "2012-10-25T07:25:43.511Z",
       "ancillaryServices": [
         "wheelChair",
@@ -16,7 +16,7 @@
         "NON-vegCombo"
       ],
       "shop": [
-        1
+        "iphone earbuds pro"
       ]
     },
     {
@@ -24,7 +24,7 @@
       "name": "AR-100",
       "depature": "Delhi",
       "destination": "London",
-      "depatureTime": "2020-10-24T18:25:43.511Z",
+      "depatureTime": "2020-12-24T18:25:43.511Z",
       "arrivalTime": "2012-10-24T23:25:43.511Z",
       "ancillaryServices": [
         "wheelChair",
@@ -72,21 +72,19 @@
   ],
   "passengerFlightDetails": [
     {
-      "id": "1",
+      "id": "P-001",
       "flightId": "L-002",
       "name": "Arjun Mehta",
-      "passengerId": "P-001",
       "checkIn": true,
       "wheelChair": true,
       "infants": false,
       "specialMeals": "NonVegCombo",
-      "shopRequest": "Shoes",
-      "seatNo": "1A"
+      "shopRequest": "ipod",
+      "seatNo": "7A"
     },
     {
-      "id": "2",
+      "id": "P-002",
       "flightId": "L-002",
-      "passengerId": "P-002",
       "name": "vidyasagar",
       "checkIn": true,
       "wheelChair": true,
@@ -96,24 +94,20 @@
       "seatNo": "2A"
     },
     {
-      "id": "3",
+      "id": "P-003",
       "flightId": "L-001",
       "name": "Yoyo",
-      "passengerId": "P-003",
       "checkIn": true,
       "wheelChair": true,
       "infants": true,
       "specialMeals": "vegMega",
-      "shopRequest": [
-        "HeadRest"
-      ],
-      "seatNo": "1A"
+      "shopRequest": "HeadRest",
+      "seatNo": "1B"
     },
     {
-      "id": "4",
+      "id": "P-004",
       "flightId": "L-002",
       "name": "Singh",
-      "passengerId": "P-004",
       "checkIn": true,
       "wheelChair": true,
       "infants": true,
@@ -122,54 +116,103 @@
       "seatNo": "2B"
     },
     {
-      "id": "5",
+      "id": "P-005",
       "flightId": "L-002",
       "name": "Bob",
-      "passengerId": "P-005",
       "checkIn": true,
       "wheelChair": false,
       "infants": true,
       "specialMeals": "vegMega",
-      "shopRequest": [
-        "HeadRest"
-      ],
+      "shopRequest": "HeadRest",
       "seatNo": "10C"
     },
     {
-      "id": "6",
+      "id": "P-006",
       "flightId": "L-002",
       "name": "Miles",
-      "passengerId": "P-006",
-      "checkIn": false,
+      "checkIn": true,
       "wheelChair": true,
       "infants": true,
       "specialMeals": "NonVegCombo",
       "shopRequest": "ipod",
-      "seatNo": ""
+      "seatNo": "4C"
     },
     {
-      "id": "7",
+      "id": "P-007",
       "flightId": "L-002",
       "name": "Gitankar",
-      "passengerId": "P-007",
       "checkIn": true,
       "wheelChair": false,
       "infants": false,
       "specialMeals": "",
-      "shopRequest": [],
+      "shopRequest": "",
       "seatNo": "1D"
     },
     {
-      "id": "8",
+      "id": "P-008",
       "flightId": "L-002",
       "name": "Amrit",
-      "passengerId": "P-008",
       "checkIn": true,
       "wheelChair": false,
       "infants": false,
       "specialMeals": "",
-      "shopRequest": [],
+      "shopRequest": "",
       "seatNo": "15D"
+    },
+    {
+      "id": "P-009",
+      "flightId": "L-001",
+      "name": "Singh",
+      "checkIn": false,
+      "wheelChair": true,
+      "infants": true,
+      "specialMeals": "Ala-carte",
+      "shopRequest": "ipod",
+      "seatNo": ""
+    },
+    {
+      "id": "P-009",
+      "flightId": "L-001",
+      "name": "Bob",
+      "checkIn": true,
+      "wheelChair": false,
+      "infants": true,
+      "specialMeals": "vegMega",
+      "shopRequest": "HeadRest",
+      "seatNo": "10C"
+    },
+    {
+      "id": "P-010",
+      "flightId": "L-001",
+      "name": "Miles",
+      "checkIn": true,
+      "wheelChair": false,
+      "infants": false,
+      "specialMeals": "",
+      "shopRequest": "",
+      "seatNo": "4D"
+    },
+    {
+      "id": "P-011",
+      "flightId": "L-001",
+      "name": "Gitankar",
+      "checkIn": false,
+      "wheelChair": false,
+      "infants": false,
+      "specialMeals": "",
+      "shopRequest": "",
+      "seatNo": ""
+    },
+    {
+      "id": "P-012",
+      "flightId": "L-001",
+      "name": "Amrit",
+      "checkIn": false,
+      "wheelChair": true,
+      "infants": false,
+      "specialMeals": "NonVegCombo",
+      "shopRequest": "ipod",
+      "seatNo": ""
     }
   ]
 }

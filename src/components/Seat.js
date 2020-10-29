@@ -3,6 +3,8 @@ import { Button } from "@material-ui/core";
 import EventSeatIcon from "@material-ui/icons/EventSeat";
 
 const Seat = (props) => {
+  let mealSeat=props.meal;
+  console.log("mealseat",mealSeat);
   let key = props.seatData;
   let color;
   let btnDisabled = false;
@@ -38,18 +40,32 @@ const Seat = (props) => {
 
   return (
     <>
+    {mealSeat ? ( <>
       <Button
         className="square"
         variant="contained"
         size="small"
         disabled={btnDisabled}
         style={{ backgroundColor: color, margin: "10px" }}
-        onClick={props.onClickSeat}
       >
         <EventSeatIcon color="inherit" fontSize="small"></EventSeatIcon>
       </Button>
     </>
-  );
+    ):(<>
+    <Button
+        className="square"
+        variant="contained"
+        size="small"
+        value={props.seatNo}
+        disabled={btnDisabled}
+        style={{ backgroundColor: color, margin: "10px" }}
+        onClick={props.onClickSeat}
+      >
+        {props.seatNo}
+        <EventSeatIcon color="inherit" fontSize="small"></EventSeatIcon>
+      </Button>
+    </>)}
+  </>);
 };
 
 export default Seat;

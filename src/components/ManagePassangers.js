@@ -42,9 +42,10 @@ const ManagePassangers = (props) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-     
+     if(response ==undefined || response.length==0 )
+     {
     dispatch(passengerActions.getPassengers(props.match.params.id));
-    
+     }
  
   },  [props.match.params.id] );
 
@@ -162,7 +163,6 @@ const ManagePassangers = (props) => {
                   wheelChair,
                   shopRequest,
                   infants,
-                  passengerId,
                 } = passenger; // destructring
                 return (
                   <TableRow key={index}>
@@ -192,9 +192,9 @@ const ManagePassangers = (props) => {
                         {" "}
                         <Button>
                           <Link
-                            to={`/staff/checkIn/seatMatrix/${id}/${flightId}`}
+                            to={`/staff/checkIn/managePassengers/seatMap/${id}/${flightId}`}
                           >
-                            Check In
+                           {checkIn ?  "Change Seat" : "Check In"}
                           </Link>
                         </Button>
                       </TableCell>

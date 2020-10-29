@@ -14,7 +14,6 @@ export function getPassengers(id) {
     return passengerApi
       .getPassengerFlightDetails(id)
       .then((resp) => {
-        debugger;
         dispatch(loadPassengersSuccess(resp));
       })
       .catch((error) => {
@@ -29,7 +28,6 @@ export function updatePassengers(passenger) {
     return passengerApi
       .savePassangerServices(passenger)
       .then((resp) => {
-        debugger;
         dispatch(updatePassenger(resp));
       })
       .catch((error) => {

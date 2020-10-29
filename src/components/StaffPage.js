@@ -28,7 +28,9 @@ import FlightPage from "./FlightPage";
 import InFlightPage from "./InFlight/InFlightPage";
 import PageNotFound from "./PageNotFound";
 import ManagePassangers from "./ManagePassangers";
+import FlightDetailPage from "./FlightDetailPage";
 import InFlightService from "./InFlight/InFlightService";
+import PassengerSeatMap from "./PassengerSeatMap";
 import { Link, Route, Switch } from "react-router-dom";
 function Copyright() {
   return (
@@ -256,9 +258,17 @@ export default function StaffPage() {
               <Paper className={fixedHeightPaper}>
                 <Switch>
                   <Route exact path="/staff" component={FlightPage} />
-                  <Route
+                  <Route exact
+                    path="/staff/checkIn/:id"
+                    component={FlightDetailPage}
+                  />
+                  <Route  exact
                     path="/staff/checkIn/managePassengers/:id"
                     component={ManagePassangers}
+                  />
+                     <Route
+                    path="/staff/checkIn/managePassengers/seatMap/:id/:flightId"
+                    component={PassengerSeatMap}
                   />
                   <Route
                     exact

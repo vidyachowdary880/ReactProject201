@@ -7,3 +7,10 @@ export function getFlights() {
     .then(handleResponse)
     .catch(handleError);
 }
+
+
+export function getFlightDetails(id) {
+  return fetch(baseUrl + "/flights?id=" + id)
+    .then(handleResponse)
+    .catch(handleError);
+}

@@ -94,7 +94,7 @@ const FlightPage = (props) => {
                     <Button variant="contained" color="primary">
                       <Link
                         className={classes.linkText}
-                        to={"/staff/checkIn/managePassengers/" + row.id}
+                        to={"/staff/checkIn/" + row.id}
                       >
                         Manage
                       </Link>
