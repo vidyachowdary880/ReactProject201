@@ -8,11 +8,42 @@ export function getPassengerFlightDetails(id) {
     .catch(handleError);
 }
 
+export function getPassengerDetailsById(id) {
+  return fetch(baseUrl + "/passengers?id=" + id)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
+export function getAllPassengerFlightDetails() {
+  return fetch(baseUrl + "/passengerFlightDetails")
+    .then(handleResponse)
+    .catch(handleError);
+}
+
+
+export function getAllPassengerDetails() {
+  return fetch(baseUrl + "/passengers")
+    .then(handleResponse)
+    .catch(handleError);
+}
+
+
 export function savePassangerServices(passangerServices) {
   return fetch(baseUrl + "/passengerFlightDetails/" + passangerServices.id, {
-    method: "PATCH", // POST for create, PUT to update when id already exists.
+    method: "PATCH",  
     headers: { "content-type": "application/json" },
     body: JSON.stringify(passangerServices),
+  })
+    .then(handleResponse)
+    .catch(handleError);
+}
+
+
+export function updatePassangerDetails(passangerDetails) {
+  return fetch(baseUrl + "/passengers/" + passangerDetails.id, {
+    method: "PATCH",  
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(passangerDetails),
   })
     .then(handleResponse)
     .catch(handleError);

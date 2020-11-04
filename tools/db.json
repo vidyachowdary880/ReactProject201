@@ -13,10 +13,12 @@
       ],
       "specialMeals": [
         "vegMega",
-        "NON-vegCombo"
+        "NON-vegCombo",
+        "Sandwich"
       ],
       "shop": [
-        "iphone earbuds pro"
+        "iphone earbuds pro",
+        "HeadSet"
       ]
     },
     {
@@ -32,10 +34,13 @@
       ],
       "specialMeals": [
         "vegMega",
-        "NON-vegCombo"
+        "NON-vegCombo",
+        "Sandwich"
       ],
       "shop": [
-        "iphone earbuds pro"
+        "iphone earbuds pro",
+        "HeadSet",
+        "Neck Rest"
       ],
       "seatType": "Max"
     },
@@ -57,14 +62,91 @@
   "passengers": [
     {
       "id": "P-001",
-      "name": "Arjun Mehta",
+      "name": "Mason",
+      "passport": "N965368",
+      "dob": "1996-03-22",
+      "address": "Chelsea"
+    },
+    {
+      "id": "P-002",
+      "name": "Vidyasagar",
+      "passport": "",
+      "dob": "",
+      "address": "hyderbad"
+    },
+    {
+      "id": "P-003",
+      "name": "Vidyasagar Ponnam",
+      "passport": "N965336",
+      "dob": "1996-03-22",
+      "address": " "
+    },
+    {
+      "id": "P-004",
+      "name": "Werner",
+      "passport": "",
+      "dob": "",
+      "address": ""
+    },
+    {
+      "id": "P-005",
+      "name": "Havertz",
+      "passport": "",
+      "dob": "1996-03-22",
+      "address": ""
+    },
+    {
+      "id": "P-006",
+      "name": "Chilwell",
+      "passport": "N342143",
+      "dob": "",
+      "address": "hyderbad"
+    },
+    {
+      "id": "P-007",
+      "name": "churchill",
+      "passport": "",
+      "dob": "1996-03-22",
+      "address": "London"
+    },
+    {
+      "id": "P-008",
+      "name": "Thatcher",
+      "passport": "",
+      "dob": "1996-03-22",
+      "address": "London"
+    },
+    {
+      "id": "P-009",
+      "name": "Diana",
+      "passport": "",
+      "dob": "1996-03-22",
+      "address": "London"
+    },
+    {
+      "id": "P-010",
+      "name": "Charles",
       "passport": "",
       "dob": "1996-03-22",
       "address": "hyderbad"
     },
     {
-      "id": "P-002",
-      "name": "vidyasagar",
+      "id": "P-011",
+      "name": "Margareth",
+      "passport": "",
+      "dob": "1996-03-22",
+      "address": "hyderbad"
+    },
+    {
+      "id": "P-012",
+      "name": "Varun",
+      "passport": "",
+      "dob": "1996-03-22",
+      "address": "hyderbad"
+    },
+    {
+      "id": "P-013",
+      "name": "Elizebith",
       "passport": "",
       "dob": "1996-03-22",
       "address": "hyderbad"
@@ -101,8 +183,8 @@
       "wheelChair": true,
       "infants": true,
       "specialMeals": "vegMega",
-      "shopRequest": "HeadRest",
-      "seatNo": "1B"
+      "shopRequest": "ipod",
+      "seatNo": "1C"
     },
     {
       "id": "P-004",
@@ -171,7 +253,7 @@
       "seatNo": ""
     },
     {
-      "id": "P-009",
+      "id": "P-013",
       "flightId": "L-001",
       "name": "Bob",
       "checkIn": true,
@@ -190,7 +272,7 @@
       "infants": false,
       "specialMeals": "",
       "shopRequest": "",
-      "seatNo": "4D"
+      "seatNo": "3C"
     },
     {
       "id": "P-011",

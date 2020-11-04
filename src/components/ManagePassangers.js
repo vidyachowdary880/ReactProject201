@@ -42,10 +42,11 @@ const ManagePassangers = (props) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-     if(response ==undefined || response.length==0 )
-     {
+  const found=response.find(obj=>obj.flightId==props.match.params.id);
+  if(found==undefined)
+  {
     dispatch(passengerActions.getPassengers(props.match.params.id));
-     }
+  } 
  
   },  [props.match.params.id] );
 
@@ -128,7 +129,7 @@ const ManagePassangers = (props) => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>FligtName</TableCell>
+              <TableCell>PassengerId</TableCell>
               <TableCell>Passenger Name</TableCell>
               <TableCell>Checking Status</TableCell>
               <TableCell>Seat Number</TableCell>
@@ -166,7 +167,7 @@ const ManagePassangers = (props) => {
                 } = passenger; // destructring
                 return (
                   <TableRow key={index}>
-                    <TableCell>{flightId}</TableCell>
+                    <TableCell>{id}</TableCell>
                     <TableCell>{name}</TableCell>
                     <TableCell>{checkIn ? "Yes" : "No"}</TableCell>
                     <TableCell>{seatNo}</TableCell>

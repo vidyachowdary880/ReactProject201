@@ -14,3 +14,13 @@ export function getFlightDetails(id) {
     .then(handleResponse)
     .catch(handleError);
 }
+
+export function saveflightService(flightService) {
+  return fetch(baseUrl + "/flights/" + flightService.id, {
+    method: "PATCH",  
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(flightService),
+  })
+    .then(handleResponse)
+    .catch(handleError);
+}

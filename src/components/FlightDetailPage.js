@@ -50,7 +50,11 @@ const FlightDetailPage = (props) => {
                 setFlightData(resp[0]);   
             })
         }
-      dispatch(passengerActions.getPassengers(props.match.params.id));  
+        const found=response.find(obj=>obj.flightId==props.match.params.id);
+        if(found==undefined)
+        {
+      dispatch(passengerActions.getPassengers(props.match.params.id)); 
+        } 
     },  [props.match.params.id] );
 
     function getSeatCount(response) {
