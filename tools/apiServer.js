@@ -30,7 +30,7 @@ function verifyToken(token) {
 // Check if the user exists in database
 function isAuthenticated({ email, password }) {
   return userdb.find(
-    (user) => user.email === email && user.password === password
+    (user) => user.email.toLowerCase() === email.toLowerCase() && user.password === password
   );
 }
 
