@@ -48,3 +48,6 @@ Staff : Check-In
 Staff : In-Flight
 
 1. Staff can  update ancillary services,special meals and shop Items.
+
+
+Note : Find Admin and Staff credentails in D:\React\ReactProject201\tools\users.json.

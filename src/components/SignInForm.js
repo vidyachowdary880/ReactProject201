@@ -59,7 +59,13 @@ export default function SignInForm(props) {
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
+      
           </Typography>
+          {props.error.message ? (
+    <Typography color="error">{props.error.message}</Typography>
+  ) : (
+    <></>
+  )}
           <form className={classes.form} onSubmit={props.onSubmit}>
             <TextField
               variant="outlined"

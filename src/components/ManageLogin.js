@@ -7,9 +7,11 @@ const ManageLogin = (props) => {
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState({});
   const [cookies, setCookie] = useCookies(["user", "email"]);
 
   function handleChange({ target }) {
+    setErrors({});
     setCredentials({
       ...credentials,
       [target.name]: target.value,
@@ -23,7 +25,6 @@ const ManageLogin = (props) => {
   }
 
   const handleGoogleResponse = (response) => {
-    console.log("bhjbiuboin" + JSON.stringify(response.profileObj));
     setCookie("role", "basic", { path: "/" });
     setCookie("email", response.profileObj.email, { path: "/" });
     props.history.push("/staff");
@@ -34,11 +35,18 @@ const ManageLogin = (props) => {
     userApi
       .loginUser(credentials)
       .then((user) => {
+        if(user==null)
+        {
+          setErrors({...errors, ["message"]: "Invalid credentials"});
+        }
+        else
+      {
         setCookie("role", user.role, { path: "/" });
         setCookie("email", user.email, { path: "/" });
         if (user.role == "basic") {
           props.history.push("/staff");
         } else props.history.push("/admin");
+      }
       })
       .catch((e) => {});
   }
@@ -49,6 +57,7 @@ const ManageLogin = (props) => {
         onChange={handleChange}
         onSubmit={handleSubmit}
         onClickGoogle={handleGoogleResponse}
+        error={errors}
       />
     </>
   );
