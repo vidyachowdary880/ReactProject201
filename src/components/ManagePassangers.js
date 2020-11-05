@@ -15,7 +15,6 @@ import {
   TableBody,
   TableContainer,
   Button,
-  Typography,
 } from "@material-ui/core";
 
  const NO_RESULTS="no results";

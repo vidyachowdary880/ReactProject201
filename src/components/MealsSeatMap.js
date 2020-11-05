@@ -3,14 +3,12 @@ import Seat from "./Seat";
  
 import {
   Box,
-  Paper,
   Table,
   TableHead,
   TableRow,
   TableCell,
   TableBody,
   TableContainer,
-  Button,
   makeStyles,
   Grid
 } from "@material-ui/core";

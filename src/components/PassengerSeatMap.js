@@ -5,14 +5,12 @@ import { useHistory } from "react-router-dom";
 import * as passengerActions from "../redux/actions/passengerActions";
 import {
   Box,
-  Paper,
   Table,
   TableHead,
   TableRow,
   TableCell,
   TableBody,
   TableContainer,
-  Button,
   makeStyles,
   Grid
 } from "@material-ui/core";

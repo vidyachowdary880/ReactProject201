@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Seat from "./Seat";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as passengerActions from "../redux/actions/passengerActions";
 import {
   Box,
-  Paper,
   Table,
   TableHead,
   TableRow,
@@ -33,10 +32,8 @@ const useStyles = makeStyles({
     marginBottom: 2,
   },
 });
-const FlightSeatMap = (props) => {
-    var seatNo;
+const FlightSeatMap = () => {
   const classes = useStyles();
-  const history = useHistory();
   const [seatArray, setSeatArray] = useState(Array(20).fill(0));
   const [seatFill, setseatFill] = useState(false);
   const [passengerRequest, setPassengerRequest] = useState({});
@@ -265,7 +262,7 @@ const FlightSeatMap = (props) => {
         <DialogTitle id="alert-dialog-title">{"Confrim"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-             Confirm CheckOut
+             Confirm Undo CheckIn
           </DialogContentText>
         </DialogContent>
         <DialogActions>

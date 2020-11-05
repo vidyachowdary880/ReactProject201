@@ -4,13 +4,6 @@ import * as passengerApi from "../../api/passengerApi";
 import TextField from "@material-ui/core/TextField";
 import {
   Typography,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  Select,
-  InputLabel,
-  MenuItem,
-  FormControl,
   makeStyles,
   Button,
 } from "@material-ui/core";

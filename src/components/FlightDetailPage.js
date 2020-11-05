@@ -6,16 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import * as flightApi from "../api/flightApi";
 import * as passengerActions from "../redux/actions/passengerActions";
 import {
-  Paper,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  TableContainer,
   Button,
   Typography,
   Grid,
@@ -106,7 +96,10 @@ const FlightDetailPage = (props) => {
           >
             Available Ancillary Services: 
           </Typography>
-          { flightData !=null ? (flightData.ancillaryServices): null }  
+          { flightData !=null ? (flightData.ancillaryServices.map((a,index)=>{
+                    return (<Typography key={index}
+                    >{a}</Typography>)
+                  })): null }  
            </Grid>
            <Grid item xs={12} md={4} lg={4}>
            <Typography
@@ -117,7 +110,10 @@ const FlightDetailPage = (props) => {
           >
             Available Meal Types: 
           </Typography>
-          { flightData !=null ? (flightData.specialMeals): null }  
+          { flightData !=null ? (flightData.specialMeals.map((a,index)=>{
+                    return (<Typography key={index}
+                    >{a}</Typography>)
+                  })): null }  
            <Typography
             component="h1"
             variant="h6"
@@ -126,7 +122,10 @@ const FlightDetailPage = (props) => {
           >
             Available Shop Items: 
           </Typography>
-          { flightData !=null ? (flightData.shop): null }  
+          { flightData !=null ? (flightData.shop.map((a,index)=>{
+                    return (<Typography key={index}
+                    >{a}</Typography>)
+                  })): null }  
           <Typography
             component="h1"
             variant="h6"
@@ -155,7 +154,13 @@ const FlightDetailPage = (props) => {
           <Divider   />
           <Divider   />
           <Divider   />
+          <Typography
+           component="h1"
+           variant="h6"
+           color="inherit"
+           noWrap>Select seat to checkIn passenger or undo checkIn</Typography>
           <Grid container spacing={0}>
+            {/* Flight Seat Map Component */}
           <FlightSeatMap
             flightId={props.match.params.id}
           />
