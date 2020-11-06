@@ -56,11 +56,11 @@ const FlightPage = (props) => {
             <TableCell>FligtName</TableCell>
             <TableCell>Depature</TableCell>
             <TableCell>Destination</TableCell>
-            {adminPage ? ( 
+            {adminPage? ( 
            <><TableCell>Meals</TableCell>
             <TableCell>ancillaryServices</TableCell>
             <TableCell>shopItems</TableCell></>
-             ) :<><TableCell>startTime</TableCell>
+             ):<><TableCell>startTime</TableCell>
              <TableCell>EndTime</TableCell>
              </>}
           </TableRow>
@@ -77,23 +77,20 @@ const FlightPage = (props) => {
                 {adminPage ?  
                 (<><TableCell>
                   {row.specialMeals.map((meal,index)=>{
-                  return (<Typography key={index}
-                    >{meal}</Typography>)
+                  return (<Typography key={index}>{meal}</Typography>)
                   })}
                 </TableCell> 
                 <TableCell>
                   {row.ancillaryServices.map((a,index)=>{
-                    return (<Typography key={index}
-                      >{a}</Typography>)
+                    return (<Typography key={index}>{a}</Typography>)
                   })}
                 </TableCell> 
                 <TableCell>
                   {row.shop.map((a,index)=>{
-                    return (<Typography key={index}
-                    >{a}</Typography>)
+                    return (<Typography key={index}>{a}</Typography>)
                   })}
-                </TableCell></>) :
-               (<> <TableCell>
+                </TableCell></>):
+               (<><TableCell>
                   {new Date(row.depatureTime).getMonth() +
                     "/" +
                     new Date(row.depatureTime).getDate() +
@@ -113,7 +110,7 @@ const FlightPage = (props) => {
                 </TableCell></>)
           }
                 <TableCell>
-                  {adminPage ? (    <Button variant="contained" color="primary">
+                  {adminPage ? (<Button variant="contained" color="primary">
                       <Link
                         className={classes.linkText}
                         to={`/admin/flights/updateServices/${row.id}`}

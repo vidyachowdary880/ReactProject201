@@ -139,6 +139,8 @@ export default function StaffPage() {
 
   const [cookies, removeCookie] = useCookies();
   let history = useHistory();
+ 
+ 
   if (cookies.role !== "basic") {
     history.push("/");
   }

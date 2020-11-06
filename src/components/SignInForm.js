@@ -104,7 +104,7 @@ export default function SignInForm(props) {
             <Grid container>
               <Grid item>
                 <GoogleLogin
-                  clientId="924274330055-ld9v197j9jb1keov0haau8c7faic7lq1.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
+                  clientId="924274330055-ld9v197j9jb1keov0haau8c7faic7lq1.apps.googleusercontent.com"
                   buttonText="GOOGLE"
                   onSuccess={props.onClickGoogle}
                   onFailure={props.onClickGoogle}

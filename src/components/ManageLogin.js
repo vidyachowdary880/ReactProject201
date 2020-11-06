@@ -43,6 +43,10 @@ const ManageLogin = (props) => {
       {
         setCookie("role", user.role, { path: "/" });
         setCookie("email", user.email, { path: "/" });
+        setCookie("role", user.role, { path: "/staff" });
+        setCookie("email", user.email, { path: "/staff" });
+        setCookie("role", user.role, { path: "/admin" });
+        setCookie("email", user.email, { path: "/admin" });
         if (user.role == "basic") {
           props.history.push("/staff");
         } else props.history.push("/admin");
@@ -53,7 +57,6 @@ const ManageLogin = (props) => {
   return (
     <>
       <SignInForm
-        credentials={credentials}
         onChange={handleChange}
         onSubmit={handleSubmit}
         onClickGoogle={handleGoogleResponse}

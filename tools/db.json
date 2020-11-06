@@ -214,8 +214,8 @@
       "name": "Miles",
       "checkIn": true,
       "wheelChair": true,
-      "infants": true,
-      "specialMeals": "NonVegCombo",
+      "infants": false,
+      "specialMeals": "Ala-carte",
       "shopRequest": "ipod",
       "seatNo": "4C"
     },
@@ -234,12 +234,12 @@
       "id": "P-008",
       "flightId": "L-002",
       "name": "Amrit",
-      "checkIn": true,
+      "checkIn": false,
       "wheelChair": false,
       "infants": false,
       "specialMeals": "",
       "shopRequest": "",
-      "seatNo": "15D"
+      "seatNo": ""
     },
     {
       "id": "P-009",
